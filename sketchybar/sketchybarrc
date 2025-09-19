@@ -44,7 +44,7 @@ source "$ITEM_DIR/right/calendar.sh"
 source "$ITEM_DIR/right/clock.sh"
 source "$ITEM_DIR/right/battery.sh"
 source "$ITEM_DIR/right/cpu.sh"
-source "$ITEM_DIR/right/memory.sh"
+source "$ITEM_DIR/right/ram.sh"
 source "$ITEM_DIR/right/brew.sh"
 
 sketchybar --hotload on

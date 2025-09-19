@@ -2,8 +2,7 @@
 
 cpu=(
   script="$PLUGIN_DIR/cpu.sh"   
-  click_script="btop" 
-  update_freq=2
+  update_freq=5
   background.height=25
   icon=$CPU
   updates=on
