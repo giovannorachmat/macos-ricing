@@ -1,4 +1,6 @@
-#!bin/sh
+#!/bin/sh
 
-sketchybar --set "$NAME" label="$(brew outdated | wc -l | tr -d ' ')"
+BREW_OUTDATED=$(brew outdated | wc -l | tr -d ' ')
+
+sketchybar --set "$NAME" label="$BREW_OUTDATED"
 

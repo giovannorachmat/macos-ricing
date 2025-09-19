@@ -1,5 +1,5 @@
-#!bin/bash
+#!bin/sh
 
-LABEL=$(memory_pressure | grep "System-wide memory free percentage:" | awk '{print 100-$5"%"}')
+RAM=$(memory_pressure | grep "System-wide memory free percentage:" | awk '{print 100-$5"%"}')
 
-sketchybar --set "$NAME" label="$LABEL"
+sketchybar --set "$NAME" label="$RAM"

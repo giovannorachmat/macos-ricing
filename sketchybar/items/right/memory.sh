@@ -1,6 +1,8 @@
+#!/bin/sh
+
 ram=(
   icon=$MEMORY
-  update_freq=10
+  update_freq=5
   script="$PLUGIN_DIR/memory.sh"
 )
 
