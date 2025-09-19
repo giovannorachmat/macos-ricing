@@ -13,6 +13,6 @@ clock=(
   label.padding_right=$PADDINGS
 )
 
-sketchybar --add item clock center \
+sketchybar --add item clock right \
            --set clock "${clock[@]}" \
            --subscribe calendar system_woke

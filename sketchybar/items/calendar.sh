@@ -13,5 +13,5 @@ calendar=(
   label.padding_right=$PADDINGS
 )
 
-sketchybar --add item calendar center \
+sketchybar --add item calendar right \
            --set calendar "${calendar[@]}"
