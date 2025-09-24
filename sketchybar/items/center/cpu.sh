@@ -7,5 +7,5 @@ cpu=(
   icon=$CPU
 )
 
-sketchybar --add item cpu right \
+sketchybar --add item cpu center \
   --set cpu "${cpu[@]}"

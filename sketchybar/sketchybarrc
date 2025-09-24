@@ -44,14 +44,16 @@ sketchybar --default "${default[@]}"
 source "$ITEM_DIR/left/aerospace.sh"
 source "$ITEM_DIR/left/front_app.sh"
 
+##### Center Items #####
+source "$ITEM_DIR/center/brew.sh"
+source "$ITEM_DIR/center/cpu.sh"
+source "$ITEM_DIR/center/ram_percent.sh"
+
 ##### Right Items #####
 source "$ITEM_DIR/right/calendar.sh"
 source "$ITEM_DIR/right/clock.sh"
 source "$ITEM_DIR/right/battery.sh"
 # source "$ITEM_DIR/right/wifi.sh"
-source "$ITEM_DIR/right/brew.sh"
-source "$ITEM_DIR/right/cpu.sh"
-source "$ITEM_DIR/right/ram_percent.sh"
 
 sketchybar --hotload true
 
