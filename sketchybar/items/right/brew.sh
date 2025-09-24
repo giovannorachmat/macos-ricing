@@ -7,4 +7,4 @@ brew_outdated=(
 )
 
 sketchybar --add item brew_outdated right \
-           --set brew_outdated "${brew_outdated[@]}"
+  --set brew_outdated "${brew_outdated[@]}"

@@ -5,7 +5,6 @@ cpu=(
   update_freq=5
   background.height=25
   icon=$CPU
-  updates=on
 )
 
 sketchybar --add item cpu right \

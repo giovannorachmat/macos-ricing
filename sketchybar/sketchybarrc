@@ -6,7 +6,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh"  # Loads all defined icons
 
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+FONT="SF Pro"
 PADDINGS=3
 ITEM_PADDINGS=4
 
@@ -15,7 +15,6 @@ bar=(
   shadow=off
   position=top
   sticky=on
-  y_offset=0
   height=30
   margin=0
   topmost=window
@@ -49,10 +48,10 @@ source "$ITEM_DIR/left/front_app.sh"
 source "$ITEM_DIR/right/calendar.sh"
 source "$ITEM_DIR/right/clock.sh"
 source "$ITEM_DIR/right/battery.sh"
-source "$ITEM_DIR/right/cpu.sh"
-source "$ITEM_DIR/right/ram.sh"
-source "$ITEM_DIR/right/brew.sh"
 # source "$ITEM_DIR/right/wifi.sh"
+source "$ITEM_DIR/right/brew.sh"
+source "$ITEM_DIR/right/cpu.sh"
+source "$ITEM_DIR/right/ram_percent.sh"
 
 sketchybar --hotload true
 
