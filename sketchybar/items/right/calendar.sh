@@ -1,7 +1,7 @@
 #!/bin/sh
 
 calendar=(
-  update_freq=10
+  update_freq=30
   icon=$CALENDAR
   icon.color=$BLUE
   script="$PLUGIN_DIR/calendar.sh" 

@@ -1,7 +1,7 @@
 #!bin/sh
 
 clock=(
-  update_freq=1
+  update_freq=10
   icon=$CLOCK
   icon.color=$GREEN
   script="$PLUGIN_DIR/clock.sh" 
