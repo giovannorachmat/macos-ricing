@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
 

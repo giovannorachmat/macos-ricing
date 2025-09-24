@@ -1,7 +1,7 @@
 #!bin/sh
 
 cpu=(
-  script="$PLUGIN_DIR/cpu.sh"   
+  script="$PLUGIN_DIR/cpu.sh"
   update_freq=5
   background.height=25
   icon=$CPU
@@ -9,4 +9,4 @@ cpu=(
 )
 
 sketchybar --add item cpu right \
-           --set cpu "${cpu[@]}"
+  --set cpu "${cpu[@]}"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 BREW_OUTDATED=$(brew outdated | wc -l | tr -d ' ')
 
