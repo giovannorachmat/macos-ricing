@@ -7,12 +7,15 @@ front_app=(
   background.border_color=$ORANGE
   background.border_width=1
   background.corner_radius=5
-  background.height=25
+  background.height=23
+  label.padding_left=10
+  label.padding_right=10
 )
 
 sketchybar --add item chevron left \
   --set chevron icon=􀆊 \
-  label.drawing=off
+  label.drawing=off \
+  background.padding_right=10
 
 sketchybar --add item front_app left \
   --subscribe front_app front_app_switched \
