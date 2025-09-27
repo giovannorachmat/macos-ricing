@@ -4,8 +4,7 @@ brew_outdated=(
   icon="􀺽"
   update_freq=120
   script="$PLUGIN_DIR/brew.sh"
-  padding_left=400
 )
 
-sketchybar --add item brew_outdated center \
+sketchybar --add item brew_outdated right \
   --set brew_outdated "${brew_outdated[@]}"

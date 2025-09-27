@@ -6,5 +6,5 @@ ram_percent=(
   icon=$MEMORY
 )
 
-sketchybar --add item ram_percent center \
+sketchybar --add item ram_percent right \
   --set ram_percent "${ram_percent[@]}"
