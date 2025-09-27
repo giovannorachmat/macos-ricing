@@ -97,9 +97,6 @@ shift-down = ['volume set 0', 'mode main']
 1 = 'secondary'
 2 = 'secondary'
 3 = 'secondary'
-4 = 'built-in'
-5 = 'secondary'
-6 = 'built-in'
 
 [[on-window-detected]]
 if.app-id = 'com.logi.cp-dev-mgr'
@@ -128,4 +125,9 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 if.app-name-regex-substring = 'finder'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.bitgapp.eqmac'
+if.app-name-regex-substring = 'eqMac'
 run = ['layout floating']
