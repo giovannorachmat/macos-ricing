@@ -41,25 +41,37 @@ outer.top = [{ monitor.secondary = 38 }, 8]
 outer.right = 12
 
 [mode.main.binding]
+# terminal shortcuts
 cmd-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
 alt-t = '''exec-and-forget open -na /Applications/kitty.app'''
 
+# layout switch
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
+# join between windows
+alt-ctrl-h = 'join-with left'
+alt-ctrl-j = 'join-with down'
+alt-ctrl-k = 'join-with up'
+alt-ctrl-l = 'join-with right'
+
+# switch focus
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+# swap windows
+alt-shift-h = 'swap left --wrap-around'
+alt-shift-j = 'swap down --wrap-around'
+alt-shift-k = 'swap up --wrap-around'
+alt-shift-l = 'swap right --wrap-around'
 
-alt-minus = 'resize smart -20'
-alt-equal = 'resize smart +20'
+# resize windows
+alt-minus = 'resize smart -60'
+alt-equal = 'resize smart +60'
 
+# switch workspaces
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -67,14 +79,18 @@ alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
+# move windows to workspaces
+alt-ctrl-1 = 'move-node-to-workspace 1'
+alt-ctrl-2 = 'move-node-to-workspace 2'
+alt-ctrl-3 = 'move-node-to-workspace 3'
+alt-ctrl-4 = 'move-node-to-workspace 4'
+alt-ctrl-5 = 'move-node-to-workspace 5'
+alt-ctrl-6 = 'move-node-to-workspace 6'
 
+# alt-tab behavior
 alt-tab = 'workspace-back-and-forth'
+
+# move all windows to monitor (if connected to external monitor)
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-semicolon = 'mode service'
@@ -84,10 +100,6 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
 
 down = 'volume down'
 up = 'volume up'
