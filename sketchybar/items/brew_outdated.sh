@@ -2,7 +2,7 @@
 
 brew_outdated=(
   icon="􀺽"
-  update_freq=300
+  update_freq=600
   script="$PLUGIN_DIR/brew_outdated.sh"
 )
 

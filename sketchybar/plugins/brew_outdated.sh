@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
-BREW_OUTDATED=$(brew outdated --greedy | wc -l | tr -su ' ')
+BREW_OUTPUT=$(brew outdated --greedy --quiet 2>&1)
+COUNT=$(echo "$BREW_OUTPUT" | wc -l | tr -d ' ')
 
-sketchybar --set "$NAME" label="$BREW_OUTDATED"
+# debugging
+# echo "Brew output: '$BREW_OUTPUT'" >>/tmp/brew_debug.log
+# echo "Count: $COUNT" >>/tmp/brew_debug.log
+
+sketchybar --set "$NAME" label="$COUNT"
