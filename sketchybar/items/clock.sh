@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 clock=(
-  update_freq=1
+  update_freq=60
   icon=$CLOCK
   icon.color=$GREEN
   script="$PLUGIN_DIR/clock.sh"

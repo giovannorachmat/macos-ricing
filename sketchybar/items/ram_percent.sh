@@ -2,7 +2,7 @@
 
 ram_percent=(
   script="$PLUGIN_DIR/ram_percent.sh"
-  update_freq=5
+  update_freq=15
   icon=$MEMORY
 )
 
