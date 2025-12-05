@@ -10,8 +10,12 @@ BELL=􀋚
 BELL_DOT=􀝗
 CLOCK=􀐫
 CPU=󰘚
-CALENDAR=􀉉 
+CALENDAR=􀉉
 MEMORY=󰓅
+
+# Brew
+BREW_EMPTY=󱌌
+BREW_FULL=󰂘
 
 # Git Icons
 GIT_ISSUE=􀍷

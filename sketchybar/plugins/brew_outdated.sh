@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-BREW_OUTPUT=$(brew outdated --greedy)
-COUNT=$(echo "$BREW_OUTPUT" | wc -l | tr -d ' ')
+source "$CONFIG_DIR/icons.sh"
 
-# debugging
-# echo "Brew output: '$BREW_OUTPUT'" >>/tmp/brew_debug.log
-# echo "Count: $COUNT" >>/tmp/brew_debug.log
+COUNT=$(brew outdated --quiet | wc -l | tr -d ' ')
 
-sketchybar --set "$NAME" label="$COUNT"
+echo "$(date) | Count: $COUNT" >>/private/tmp/brew_debug.log
+
+if ((COUNT > 0)); then
+  sketchybar --set "$NAME" icon="$BREW_FULL" label="$COUNT"
+else
+  sketchybar --set "$NAME" icon="$BREW_EMPTY" label=""
+fi

@@ -6,7 +6,7 @@ SSID=$(system_profiler SPAirPortDataType | awk '/Current Network/ {getline;$1=$1
 
 if [ "$SENDER" = "wifi_change" ]; then
   if [ -z "$SSID" ]; then
-    sketchybar --set "$NAME" icon="$WIFI_DISCONNECTED" label="Disconnected"
+    sketchybar --set "$NAME" icon="$WIFI_DISCONNECTED" label=""
   else
     sketchybar --set "$NAME" icon="$WIFI_CONNECTED" label="$SSID"
   fi
