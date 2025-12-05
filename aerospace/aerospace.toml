@@ -1,9 +1,4 @@
-after-login-command = []
-
-after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget borders',
-]
+after-startup-command = ['exec-and-forget sketchybar']
 
 exec-on-workspace-change = [
   '/bin/bash',
@@ -23,7 +18,7 @@ accordion-padding = 30
 default-root-container-layout = 'tiles'
 
 # Possible values: horizontal|vertical|auto
-default-root-container-orientation = 'auto'
+default-root-container-orientation = 'horizontal'
 
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
@@ -38,7 +33,7 @@ inner.horizontal = 12
 inner.vertical = 12
 outer.left = 12
 outer.bottom = 12
-outer.top = [{ monitor.secondary = 38 }, 35]
+outer.top = [{ monitor.'LG ULTRAGEAR' = 38 }, { monitor.'built-in' = 35 }, 10]
 outer.right = 12
 
 [mode.main.binding]
@@ -47,8 +42,8 @@ cmd-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
 alt-t = '''exec-and-forget open -na /Applications/kitty.app'''
 
 # layout switch
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+alt-minus = 'layout tiles horizontal vertical'
+alt-backslash = 'layout accordion horizontal vertical'
 
 # join between windows
 alt-ctrl-h = 'join-with left'
@@ -63,14 +58,14 @@ alt-k = 'focus up'
 alt-l = 'focus right'
 
 # swap windows
-alt-shift-h = 'swap left --wrap-around'
-alt-shift-j = 'swap down --wrap-around'
-alt-shift-k = 'swap up --wrap-around'
-alt-shift-l = 'swap right --wrap-around'
+cmd-shift-h = 'swap left --wrap-around'
+cmd-shift-j = 'swap down --wrap-around'
+cmd-shift-k = 'swap up --wrap-around'
+cmd-shift-l = 'swap right --wrap-around'
 
 # resize windows
-alt-minus = 'resize smart -60'
-alt-equal = 'resize smart +60'
+alt-shift-j = 'resize smart -60'
+alt-shift-k = 'resize smart +60'
 
 # switch workspaces
 alt-1 = 'workspace 1'
@@ -79,6 +74,7 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
 
 # move windows to workspaces
 alt-ctrl-1 = 'move-node-to-workspace 1'
@@ -87,6 +83,7 @@ alt-ctrl-3 = 'move-node-to-workspace 3'
 alt-ctrl-4 = 'move-node-to-workspace 4'
 alt-ctrl-5 = 'move-node-to-workspace 5'
 alt-ctrl-6 = 'move-node-to-workspace 6'
+alt-ctrl-7 = 'move-node-to-workspace 7'
 
 # alt-tab behavior
 alt-tab = 'workspace-back-and-forth'
@@ -102,14 +99,12 @@ r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 
-down = 'volume down'
-up = 'volume up'
-shift-down = ['volume set 0', 'mode main']
 
 [workspace-to-monitor-force-assignment]
 1 = 'secondary'
 2 = 'secondary'
 3 = 'secondary'
+7 = 3
 
 [[on-window-detected]]
 if.app-id = 'com.logi.cp-dev-mgr'
@@ -143,4 +138,8 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.bitgapp.eqmac'
 if.app-name-regex-substring = 'eqMac'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
 run = ['layout floating']

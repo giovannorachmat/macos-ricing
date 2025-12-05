@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 front_app=(
-  icon.drawing=off
+  icon.drawing=on
   script="$PLUGIN_DIR/front_app.sh"
   background.color=$TRANSPARENT
   background.border_color=$ORANGE

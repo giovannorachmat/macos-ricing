@@ -6,5 +6,9 @@
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
 if [ "$SENDER" = "front_app_switched" ]; then
-  sketchybar --set "$NAME" label="$INFO"
+  if [ "$INFO" ]; then
+    sketchybar --set "$NAME" label="$INFO"
+  else
+    sketchybar --set "$NAME" label="󰔓"
+  fi
 fi

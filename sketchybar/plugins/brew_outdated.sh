@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BREW_OUTPUT=$(brew outdated --greedy --quiet 2>&1)
+BREW_OUTPUT=$(brew outdated --greedy)
 COUNT=$(echo "$BREW_OUTPUT" | wc -l | tr -d ' ')
 
 # debugging
