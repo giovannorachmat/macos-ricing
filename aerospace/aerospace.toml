@@ -65,25 +65,23 @@ cmd-shift-l = 'swap right --wrap-around'
 
 # resize windows
 alt-shift-j = 'resize smart -60'
-alt-shift-k = 'resize smart +60'
+alt-shift-l = 'resize smart +60'
 
 # switch workspaces
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
+alt-q = 'workspace Q'
+alt-w = 'workspace W'
+alt-e = 'workspace E'
 
 # move windows to workspaces
-alt-ctrl-1 = 'move-node-to-workspace 1'
-alt-ctrl-2 = 'move-node-to-workspace 2'
-alt-ctrl-3 = 'move-node-to-workspace 3'
-alt-ctrl-4 = 'move-node-to-workspace 4'
-alt-ctrl-5 = 'move-node-to-workspace 5'
-alt-ctrl-6 = 'move-node-to-workspace 6'
-alt-ctrl-7 = 'move-node-to-workspace 7'
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-q = 'move-node-to-workspace Q'
+alt-shift-w = 'move-node-to-workspace W'
+alt-shift-e = 'move-node-to-workspace E'
 
 # alt-tab behavior
 alt-tab = 'workspace-back-and-forth'
@@ -104,7 +102,6 @@ backspace = ['close-all-windows-but-current', 'mode main']
 1 = 'secondary'
 2 = 'secondary'
 3 = 'secondary'
-7 = 3
 
 [[on-window-detected]]
 if.app-id = 'com.logi.cp-dev-mgr'
