@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 calendar=(
-  update_freq=60
+  update_freq=3600
   icon=$CALENDAR
   icon.color=$BLUE
   script="$PLUGIN_DIR/calendar.sh"
