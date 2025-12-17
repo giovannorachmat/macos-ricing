@@ -51,7 +51,7 @@ source "$ITEM_DIR/clock.sh"
 
 ##### Right Items #####
 source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/sound.sh"
+# source "$ITEM_DIR/sound.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/brew_outdated.sh"
