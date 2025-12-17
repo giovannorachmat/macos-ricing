@@ -2,7 +2,7 @@
 
 source "$CONFIG_DIR/icons.sh"
 
-COUNT=$(/bin/zsh -c "brew outdated --quiet | wc -l | tr -d ' '")
+COUNT=$($(which zsh) -c "brew outdated --quiet | wc -l | tr -d ' '")
 
 echo "$(date) | Count: $COUNT" >>/private/tmp/brew_debug.log
 
