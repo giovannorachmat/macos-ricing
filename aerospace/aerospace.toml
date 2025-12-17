@@ -38,7 +38,7 @@ outer.right = 12
 
 [mode.main.binding]
 # terminal shortcuts
-cmd-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
+# cmd-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
 alt-t = '''exec-and-forget open -na /Applications/kitty.app'''
 
 # layout switch
@@ -65,7 +65,7 @@ cmd-shift-l = 'swap right --wrap-around'
 
 # resize windows
 alt-shift-j = 'resize smart -60'
-alt-shift-l = 'resize smart +60'
+alt-shift-k = 'resize smart +60'
 
 # switch workspaces
 alt-1 = 'workspace 1'
