@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 brew_outdated=(
-  update_freq=600
+  update_freq=7200
   script="$PLUGIN_DIR/brew_outdated.sh"
 )
 
