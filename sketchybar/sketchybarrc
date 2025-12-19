@@ -46,7 +46,7 @@ source "$ITEM_DIR/aerospace.sh"
 source "$ITEM_DIR/front_app.sh"
 
 ##### Center Items #####
-source "$ITEM_DIR/clock.sh"
+# source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/calendar.sh"
 
 ##### Right Items #####
@@ -56,6 +56,7 @@ source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/brew_outdated.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/ram_percent.sh"
+source "$ITEM_DIR/weather.sh"
 
 sketchybar --hotload true
 
