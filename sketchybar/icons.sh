@@ -9,7 +9,7 @@ LOCK=􀒳
 BELL=􀋚
 BELL_DOT=􀝗
 CLOCK=􀐫
-CPU=󰘚
+CPU=􀫥
 CALENDAR=􀉉
 MEMORY=󰓅
 
