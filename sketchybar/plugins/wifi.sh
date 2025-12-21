@@ -2,7 +2,7 @@
 
 source "$CONFIG_DIR/icons.sh"
 
-SSID=$(system_profiler SPAirPortDataType | awk '/Current Network/ {getline;$1=$1; gsub(":",""); print;exit}')
+SSID=$(networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
 if [ "$SENDER" = "wifi_change" ]; then
   if [ -z "$SSID" ]; then
