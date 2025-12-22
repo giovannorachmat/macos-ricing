@@ -37,6 +37,7 @@ default=(
   icon.padding_right=$ITEM_PADDINGS
   label.padding_left=$ITEM_PADDINGS
   label.padding_right=$ITEM_PADDINGS
+  background.height=25
 )
 sketchybar --default "${default[@]}"
 

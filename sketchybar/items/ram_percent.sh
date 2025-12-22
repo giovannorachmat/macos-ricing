@@ -7,6 +7,11 @@ ram_percent=(
   graph.color=$RED
   graph.fill_color=$RED
   graph.line_width=2
+  background.padding_left=0
+  background.color=$TRANSPARENT
+  background.border_color=$TRANSPARENT
+  background.border_width=1
+  background.corner_radius=5
   background.height=20
   icon.padding_right=10
   icon.padding_left=0
@@ -14,5 +19,5 @@ ram_percent=(
   icon=$MEMORY
 )
 
-sketchybar --add graph ram_percent e 40 \
+sketchybar --add graph ram_percent e 50 \
   --set ram_percent "${ram_percent[@]}"

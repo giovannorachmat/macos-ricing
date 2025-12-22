@@ -42,8 +42,8 @@ outer.right = 12
 alt-t = '''exec-and-forget open -na /Applications/kitty.app'''
 
 # layout switch
-alt-minus = 'layout tiles horizontal vertical'
-alt-backslash = 'layout accordion horizontal vertical'
+alt-shift-minus = 'layout tiles horizontal vertical'
+alt-shift-backslash = 'layout accordion horizontal vertical'
 
 # join between windows
 alt-ctrl-h = 'join-with left'
@@ -64,8 +64,8 @@ cmd-shift-k = 'swap up --wrap-around'
 cmd-shift-l = 'swap right --wrap-around'
 
 # resize windows
-alt-shift-j = 'resize smart -60'
-alt-shift-k = 'resize smart +60'
+alt-minus = 'resize smart -60'
+alt-equal = 'resize smart +60'
 
 # switch workspaces
 alt-1 = 'workspace 1'
