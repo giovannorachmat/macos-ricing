@@ -1,0 +1,192 @@
+name: Security Vulnerability Scan
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  schedule:
+    # Run weekly on Sundays at 2 AM UTC
+    - cron: '0 2 * * 0'
+
+jobs:
+  # Secret scanning
+  secrets-scan:
+    name: Scan for Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+      - name: Run TruffleHog
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: main
+          head: HEAD
+
+  # Security scanning for shell scripts
+  shell-security:
+    name: Shell Script Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on all shell scripts
+        run: |
+          find . -name "*.sh" -type f -exec shellcheck --severity=warning --shell=bash {} +
+
+      - name: Check for dangerous patterns
+        run: |
+          # Check for eval usage
+          if grep -r "eval " . --include="*.sh"; then
+            echo "::warning::Found eval usage - review for security implications"
+          fi
+          
+          # Check for system() calls
+          if grep -r "system(" . --include="*.sh"; then
+            echo "::warning::Found system() calls - review for security implications"
+          fi
+          
+          # Check for hardcoded passwords/tokens
+          if grep -r -i "password\|token\|secret\|api_key\|private_key" . --include="*.sh" --include="*.toml" --include="*.rc"; then
+            echo "::warning::Found potential hardcoded credentials - review immediately"
+          fi
+
+  # IP address scanning
+  ip-scan:
+    name: IP Address Detection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan for IP addresses
+        run: |
+          # Find IPv4 addresses
+          ipv4_pattern='\b([0-9]{1,3}\.){3}[0-9]{1,3}\b'
+          if grep -r -E "$ipv4_pattern" . --include="*.sh" --include="*.toml" --include="*.rc" --exclude-dir=.git; then
+            echo "::warning::Found potential IP addresses - review if they should be hardcoded"
+          fi
+          
+          # Find IPv6 addresses (basic pattern)
+          ipv6_pattern='([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}'
+          if grep -r -E "$ipv6_pattern" . --include="*.sh" --include="*.toml" --include="*.rc" --exclude-dir=.git; then
+            echo "::warning::Found potential IPv6 addresses - review if they should be hardcoded"
+          fi
+
+  # Configuration file security
+  config-security:
+    name: Configuration Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TOML validator
+        run: |
+          pip install toml-cli
+
+      - name: Validate TOML files
+        run: |
+          find . -name "*.toml" -type f -exec toml-cli validate {} \;
+
+      - name: Check for insecure configurations
+        run: |
+          # Check for potentially insecure settings in TOML files
+          if grep -r -i -E "(password|token|secret|key|credential)" . --include="*.toml"; then
+            echo "::warning::Found potential credentials in TOML files - review immediately"
+          fi
+          
+          # Check for HTTP URLs (should be HTTPS)
+          if grep -r -E 'http://[^s]' . --include="*.sh" --include="*.toml"; then
+            echo "::warning::Found HTTP URLs - consider using HTTPS"
+          fi
+
+  # Dependency security (if any package files exist)
+  dependency-security:
+    name: Dependency Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for package files
+        id: check-files
+        run: |
+          if [ -f "package.json" ] || [ -f "requirements.txt" ] || [ -f "Pipfile" ] || [ -f "Cargo.toml" ]; then
+            echo "has_package_files=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_package_files=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run npm audit (if package.json exists)
+        if: steps.check-files.outputs.has_package_files == 'true' && hashFiles('package.json') != ''
+        run: |
+          if command -v npm &> /dev/null; then
+            npm audit --audit-level=moderate
+          fi
+
+      - name: Run safety check (if Python requirements exist)
+        if: steps.check-files.outputs.has_package_files == 'true' && (hashFiles('requirements.txt') != '' || hashFiles('Pipfile') != '')
+        run: |
+          pip install safety
+          if [ -f "requirements.txt" ]; then
+            safety check -r requirements.txt
+          fi
+          if [ -f "Pipfile" ]; then
+            pipenv install --dev
+            safety check
+          fi
+
+  # File permissions audit
+  permissions-audit:
+    name: File Permissions Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check file permissions
+        run: |
+          # Find executable files that shouldn't be
+          find . -type f -executable -name "*.md" -exec echo "::warning::Markdown file should not be executable: {}" \;
+          find . -type f -executable -name "*.txt" -exec echo "::warning::Text file should not be executable: {}" \;
+          
+          # Check for shell scripts that aren't executable
+          find . -name "*.sh" -not -executable -exec echo "::warning::Shell script should be executable: {}" \;
+
+  # Generate security report
+  security-report:
+    name: Security Report
+    runs-on: ubuntu-latest
+    needs: [secrets-scan, shell-security, ip-scan, config-security, dependency-security, permissions-audit]
+    if: always()
+    steps:
+      - name: Generate Summary
+        run: |
+          echo "# Security Scan Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "- **Secrets Scan**: ${{ needs.secrets-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Shell Security**: ${{ needs.shell-security.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **IP Address Scan**: ${{ needs.ip-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Config Security**: ${{ needs.config-security.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Dependency Security**: ${{ needs.dependency-security.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Permissions Audit**: ${{ needs.permissions-audit.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "For detailed results, check the individual job logs." >> $GITHUB_STEP_SUMMARY
