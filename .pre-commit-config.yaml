@@ -1,0 +1,49 @@
+repos:
+  # Shell script linting and security
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        args: [--severity=warning, --shell=bash]
+        files: \.sh$
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: check-added-large-files
+        args: ['--maxkb=100']
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+
+  # TOML configuration validation (would need toml-cli, but keeping structure)
+  # Note: You may need to install toml-cli separately for TOML validation
+
+  # Security scanning for secrets (using truffleHog as alternative)
+  - repo: https://github.com/trufflesecurity/trufflehog
+    rev: v3.86.7
+    hooks:
+      - id: trufflehog
+        args: [--only-verified]
+
+  # JSON validation for any JSON configs
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-json
+        files: \.json$
+
+  # Ensure scripts are executable
+  - repo: local
+    hooks:
+      - id: ensure-executable
+        name: Ensure shell scripts are executable
+        entry: bash -c 'if [[ -f "$1" && "$1" =~ \.sh$ ]]; then chmod +x "$1"; fi'
+        language: system
+        files: \.sh$
+        pass_filenames: true
