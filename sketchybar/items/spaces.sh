@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 sketchybar --add bracket spaces '/space\..*/' \
            --set spaces background.color=$TRANSPARENT \

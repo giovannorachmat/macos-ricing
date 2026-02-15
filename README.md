@@ -209,4 +209,4 @@ This repository follows the MIT License. Feel free to use and modify these confi
 
 **Note**: This setup is optimized for MacBook Pro 13" and 14" models but can be adapted for other Mac configurations. Adjust the gap settings and workspace assignments based on your specific hardware setup.
 
-**Disclaimer**: This README is generated using OpenCode Big Pickle model.
+**Disclaimer**: This markdown is generated using OpenCode Big Pickle model.
