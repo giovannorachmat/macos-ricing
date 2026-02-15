@@ -58,14 +58,14 @@ alt-k = 'focus up'
 alt-l = 'focus right'
 
 # swap windows
-cmd-shift-h = 'swap left --wrap-around'
-cmd-shift-j = 'swap down --wrap-around'
-cmd-shift-k = 'swap up --wrap-around'
-cmd-shift-l = 'swap right --wrap-around'
+alt-shift-h = 'swap left --wrap-around'
+alt-shift-j = 'swap down --wrap-around'
+alt-shift-k = 'swap up --wrap-around'
+alt-shift-l = 'swap right --wrap-around'
 
 # resize windows
-alt-shift-j = 'resize smart -60'
-alt-shift-k = 'resize smart +60'
+alt-shift-minus = 'resize smart -60'
+alt-shift-equal = 'resize smart +60'
 
 # switch workspaces
 alt-1 = 'workspace 1'
