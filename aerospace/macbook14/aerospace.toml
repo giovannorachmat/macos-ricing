@@ -31,7 +31,7 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 8
 inner.vertical = 8
-outer.top = [{ monitor.'LG ULTRAGEAR' = 38 }, { monitor.'built-in' = 10 }, 10]
+outer.top = [{ monitor.'XG27ACMES' = 38 }, { monitor.'built-in' = 10 }, 10]
 outer.bottom = 8
 outer.left = 8
 outer.right = 8
