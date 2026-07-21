@@ -1,3 +1,5 @@
+config-version = 2
+
 after-startup-command = ['exec-and-forget sketchybar']
 
 exec-on-workspace-change = [
@@ -14,18 +16,13 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 accordion-padding = 30
 
-# Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
 
-# Possible values: horizontal|vertical|auto
 default-root-container-orientation = 'horizontal'
 
-# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
-
-config-version = 2
 
 on-window-detected = [
   {
@@ -56,7 +53,6 @@ cmd-alt-h = [] # Disable "hide others"
 ctrl-up = []   # Disable "show spaces"
 
 # terminal shortcuts
-# cmd-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
 alt-enter = '''exec-and-forget open -na /Applications/Kitty.app'''
 
 # layout switch
@@ -124,7 +120,6 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
-
 
 [workspace-to-monitor-force-assignment]
 1 = 'secondary'
