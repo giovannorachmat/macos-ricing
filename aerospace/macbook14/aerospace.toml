@@ -25,6 +25,19 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
+config-version = 2
+
+on-window-detected = [
+  {
+    if = 'test %{app-bundle-id} = com.logi.cp-dev-mgr || test %{app-bundle-id} = com.if.Amphetamine || test %{app-bundle-id} = net.freemacsoft.AppCleaner || test %{app-bundle-id} = com.apple.ActivityMonitor || test %{app-bundle-id} = com.apple.finder || test %{app-bundle-id} = org.pqrs.Karabiner-Elements.Settings',
+    run = ['layout floating']
+  },
+  {
+    if = 'test %{app-name} = scrcpy || test %{app-bundle-id} = net.whatsapp.WhatsApp || test %{app-bundle-id} = com.bitgapp.eqmac',
+    run = ['layout floating', 'move-node-to-workspace E']
+  },
+]
+
 [key-mapping]
 preset = 'qwerty'
 
@@ -37,13 +50,18 @@ outer.left = 8
 outer.right = 8
 
 [mode.main.binding]
+# Disable native Mac shortcuts
+cmd-h = []     # Disable "hide application"
+cmd-alt-h = [] # Disable "hide others"
+ctrl-up = []   # Disable "show spaces"
+
 # terminal shortcuts
 # cmd-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
-alt-enter = '''exec-and-forget open -na /Applications/Ghostty.app'''
+alt-enter = '''exec-and-forget open -na /Applications/Kitty.app'''
 
 # layout switch
-alt-minus = 'layout tiles horizontal vertical'
-alt-backslash = 'layout accordion horizontal vertical'
+alt-shift-minus = 'layout tiles horizontal vertical'
+alt-shift-backslash = 'layout accordion horizontal vertical'
 
 # join between windows
 alt-ctrl-h = 'join-with left'
@@ -51,11 +69,21 @@ alt-ctrl-j = 'join-with down'
 alt-ctrl-k = 'join-with up'
 alt-ctrl-l = 'join-with right'
 
+alt-ctrl-left = 'join-with left'
+alt-ctrl-down = 'join-with down'
+alt-ctrl-up = 'join-with up'
+alt-ctrl-right = 'join-with right'
+
 # switch focus
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
+
+alt-left = 'focus left'
+alt-down = 'focus down'
+alt-up = 'focus up'
+alt-right = 'focus right'
 
 # swap windows
 alt-shift-h = 'swap left --wrap-around'
@@ -64,8 +92,8 @@ alt-shift-k = 'swap up --wrap-around'
 alt-shift-l = 'swap right --wrap-around'
 
 # resize windows
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
 
 # switch workspaces
 alt-1 = 'workspace 1'
@@ -102,41 +130,3 @@ backspace = ['close-all-windows-but-current', 'mode main']
 1 = 'secondary'
 2 = 'secondary'
 3 = 'secondary'
-
-[[on-window-detected]]
-if.app-id = 'com.logi.cp-dev-mgr'
-if.app-name-regex-substring = 'logi'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.if.Amphetamine'
-if.app-name-regex-substring = 'amphetamine'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
-if.app-name-regex-substring = 'whatsapp'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'net.freemacsoft.AppCleaner'
-if.app-name-regex-substring = 'AppCleaner'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.ActivityMonitor'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.finder'
-if.app-name-regex-substring = 'finder'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.bitgapp.eqmac'
-if.app-name-regex-substring = 'eqMac'
-run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
-run = ['layout floating']
