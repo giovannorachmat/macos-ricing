@@ -42,8 +42,8 @@ default=(
 sketchybar --default "${default[@]}"
 
 # source "$ITEM_DIR/yabai.sh"
-# source "$ITEM_DIR/aerospace.sh"
-source "$ITEM_DIR/omniwm.sh"
+# source "$ITEM_DIR/omniwm.sh"
+source "$ITEM_DIR/aerospace.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # source "$ITEM_DIR/clock.sh"
@@ -63,6 +63,6 @@ sketchybar --hotload true
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
 
-pkill -f "$PLUGIN_DIR/omniwm_listener.sh" 2>/dev/null || true
-
-"$PLUGIN_DIR/omniwm_listener.sh" &
+# pkill -f "$PLUGIN_DIR/omniwm_listener.sh" 2>/dev/null || true
+#
+# "$PLUGIN_DIR/omniwm_listener.sh" &
