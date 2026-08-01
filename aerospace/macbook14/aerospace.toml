@@ -3,9 +3,9 @@ config-version = 2
 after-startup-command = ['exec-and-forget sketchybar']
 
 exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+  "/bin/bash",
+  "-c",
+  "~/.config/sketchybar/plugins/aerospace.sh",
 ]
 
 # Start AeroSpace at login
