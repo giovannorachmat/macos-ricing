@@ -5,8 +5,8 @@ monitorDwindleOverrides = []
 mode = "dark"
 
 [borders]
-enabled = false
-width = 5.0
+enabled = true
+width = 3.0
 
 [borders.color]
 alpha = 1.0
@@ -31,9 +31,9 @@ useGlobalGaps = true
 [focus]
 crossesMonitorAtEdge = false
 followsMouse = true
-followsWindowToMonitor = false
-lockModifier = "off"
-moveCrossesMonitorAtEdge = true
+followsWindowToMonitor = true
+lockModifier = "on"
+moveCrossesMonitorAtEdge = false
 moveMouseToFocusedWindow = true
 
 [gaps]
@@ -67,7 +67,7 @@ workspaceSwipeEnabled = false
 workspaceSwipeFingerCount = 4
 
 [hiddenBar]
-enabled = true
+enabled = false
 hiddenBundleIDs = []
 rehideIntervalSeconds = 5.0
 
