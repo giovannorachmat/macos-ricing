@@ -93,8 +93,8 @@ alt-shift-up = 'swap up --wrap-around'
 alt-shift-right = 'swap right --wrap-around'
 
 # resize windows
-alt-minus = 'resize smart -50'
-alt-equal = 'resize smart +50'
+alt-minus = 'resize smart -250'
+alt-equal = 'resize smart +250'
 
 # switch workspaces
 alt-1 = 'workspace 1'
