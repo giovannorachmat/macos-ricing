@@ -1,15 +1,9 @@
-FOCUSED_WORKSPACE=$(yabai -m space --focus recent)
+#!/usr/bin/env bash
 
-# if [ "$AEROSPACE_SERVICE_MODE_ENABLED" = true ]; then
-#   sketchybar --set workspaces_service_mode_indicator \
-#     label.drawing=on
-# else
-#   sketchybar --set workspaces_service_mode_indicator \
-#     label.drawing=off
-# fi
+SPACE="$(yabai -m query --spaces | jq -r '.[] | select(.["has-focus"] == true) | .label')"
+DISPLAY="$(yabai -m query --spaces | jq -r '.[] | select(.["has-focus"] == true) | .display')"
+FOCUSED="$SPACE | $DISPLAY"
 
-if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set $NAME background.drawing=on
-else
-  sketchybar --set $NAME background.drawing=off
-fi
+[ -z "$FOCUSED" ] && exit 0
+
+sketchybar --set yabai_space icon="$FOCUSED"
