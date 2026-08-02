@@ -15,7 +15,8 @@ alt - q : yabai -m space --focus "[ q ]";
 alt - w : yabai -m space --focus "[ w ]";
 alt - e : yabai -m space --focus "[ e ]";
 
-alt - tab : yabai -m space --focus recent
+alt - tab : yabai -m space --focus next || yabai -m space --focus first
+alt + shift - tab : yabai -m space --focus prev || yabai -m space --focus last
 
 # ── Layout ─────────────────────────────────────────────────────────
 shift + alt - r : yabai -m space --rotate 270
