@@ -3,9 +3,9 @@ config-version = 2
 after-startup-command = ['exec-and-forget sketchybar']
 
 exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+  "/bin/bash",
+  "-c",
+  "~/.config/sketchybar/plugins/aerospace.sh",
 ]
 
 # Start AeroSpace at login
@@ -76,10 +76,10 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-alt-left = 'focus left'
-alt-down = 'focus down'
-alt-up = 'focus up'
-alt-right = 'focus right'
+alt-cmd-left = 'focus left'
+alt-cmd-down = 'focus down'
+alt-cmd-up = 'focus up'
+alt-cmd-right = 'focus right'
 
 # swap windows
 alt-shift-h = 'swap left --wrap-around'
@@ -87,9 +87,14 @@ alt-shift-j = 'swap down --wrap-around'
 alt-shift-k = 'swap up --wrap-around'
 alt-shift-l = 'swap right --wrap-around'
 
+alt-shift-left = 'swap left --wrap-around'
+alt-shift-down = 'swap down --wrap-around'
+alt-shift-up = 'swap up --wrap-around'
+alt-shift-right = 'swap right --wrap-around'
+
 # resize windows
-alt-minus = 'resize smart -50'
-alt-equal = 'resize smart +50'
+alt-minus = 'resize smart -250'
+alt-equal = 'resize smart +250'
 
 # switch workspaces
 alt-1 = 'workspace 1'

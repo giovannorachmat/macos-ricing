@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 
-FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
+FOCUSED="$(aerospace list-workspaces --focused)"
 
-if [ -z "$FOCUSED_WORKSPACE" ]; then
-  FOCUSED_WORKSPACE="No Window"
-fi
+[ -z "$FOCUSED" ] && exit 0
 
-sketchybar --set space \
-  icon="$FOCUSED_WORKSPACE" \
-  background.drawing=on
+sketchybar --set aero_space icon="$FOCUSED"
+
+# FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
+#
+# if [ -z "$FOCUSED_WORKSPACE" ]; then
+#   FOCUSED_WORKSPACE="No Window"
+# fi
+#
+# sketchybar --set space \
+#   icon="$FOCUSED_WORKSPACE" \
+#   background.drawing=on
 
 # # if [ "$AEROSPACE_SERVICE_MODE_ENABLED" = true ]; then
 # #   sketchybar --set workspaces_service_mode_indicator \
