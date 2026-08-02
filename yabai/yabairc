@@ -19,13 +19,23 @@ yabai -m config \
   window_gap 8
 
 # per-space top padding (depends on sketchybar; spaces 1-4 = MacBook, 5-7 = 1440p monitor)
+# if command -v sketchybar &>/dev/null; then
+#   yabai -m config --space 1 top_padding 8
+#   yabai -m config --space 2 top_padding 8
+#   yabai -m config --space 3 top_padding 8
+#   yabai -m config --space 4 top_padding 38
+#   yabai -m config --space 5 top_padding 38
+#   yabai -m config --space 6 top_padding 38
+# fi
+
 if command -v sketchybar &>/dev/null; then
-  yabai -m config --space 1 top_padding 8
-  yabai -m config --space 2 top_padding 8
-  yabai -m config --space 3 top_padding 8
-  yabai -m config --space 4 top_padding 38
-  yabai -m config --space 5 top_padding 38
-  yabai -m config --space 6 top_padding 38
+    for s in 1 2 3; do
+        yabai -m config --space "$s" top_padding 8
+    done
+
+    for s in 4 5 6; do
+        yabai -m config --space "$s" top_padding 38
+    done
 fi
 
 # ── Space Labels ───────────────────────────────────────────────────
