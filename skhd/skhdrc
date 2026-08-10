@@ -8,12 +8,12 @@ alt - s : yabai -m display --focus west
 alt - g : yabai -m display --focus east
 
 # ── Space Focus ────────────────────────────────────────────────────
-alt - 1 : yabai -m space --focus "[ 1 ]";
-alt - 2 : yabai -m space --focus "[ 2 ]";
-alt - 3 : yabai -m space --focus "[ 3 ]";
-alt - q : yabai -m space --focus "[ q ]";
-alt - w : yabai -m space --focus "[ w ]";
-alt - e : yabai -m space --focus "[ e ]";
+alt - 1 : yabai -m space --focus "D1";
+alt - 2 : yabai -m space --focus "D2";
+alt - 3 : yabai -m space --focus "D3";
+alt - q : yabai -m space --focus "Q" ;
+alt - w : yabai -m space --focus "W" ;
+alt - e : yabai -m space --focus "E" ;
 
 alt - tab : yabai -m space --focus next || yabai -m space --focus first
 alt + shift - tab : yabai -m space --focus prev || yabai -m space --focus last
@@ -48,12 +48,12 @@ shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
 # move to space
-shift + alt - 1 : yabai -m window --space "[ 1 ]";
-shift + alt - 2 : yabai -m window --space "[ 2 ]";
-shift + alt - 3 : yabai -m window --space "[ 3 ]";
-shift + alt - q : yabai -m window --space "[ q ]";
-shift + alt - w : yabai -m window --space "[ w ]";
-shift + alt - e : yabai -m window --space "[ e ]";
+shift + alt - 1 : yabai -m window --space "D1";
+shift + alt - 2 : yabai -m window --space "D2";
+shift + alt - 3 : yabai -m window --space "D3";
+shift + alt - q : yabai -m window --space "Q" ;
+shift + alt - w : yabai -m window --space "W" ;
+shift + alt - e : yabai -m window --space "E" ;
 
 # ── Yabai Service ──────────────────────────────────────────────────
 ctrl + alt - q : yabai --stop-service

@@ -28,23 +28,33 @@ yabai -m config \
 #   yabai -m config --space 6 top_padding 38
 # fi
 
-if command -v sketchybar &>/dev/null; then
+
+if command -v sketchybar >/dev/null; then
+    EXTERNAL_IS_1440P=$(
+        yabai -m query --displays |
+        jq -r 'any(.[]; .index == 2 and .frame.w == 2560)'
+    )
+
     for s in 1 2 3; do
         yabai -m config --space "$s" top_padding 8
     done
 
-    for s in 4 5 6; do
-        yabai -m config --space "$s" top_padding 38
+    for s in 4 5 6 7; do
+        if [[ "$EXTERNAL_IS_1440P" == "true" ]]; then
+            yabai -m config --space "$s" top_padding 38
+        else
+            yabai -m config --space "$s" top_padding 8
+        fi
     done
 fi
 
 # ── Space Labels ───────────────────────────────────────────────────
-yabai -m space 4 --label "[ 1 ]"
-yabai -m space 5 --label "[ 2 ]"
-yabai -m space 6 --label "[ 3 ]"
-yabai -m space 1 --label "[ q ]"
-yabai -m space 2 --label "[ w ]"
-yabai -m space 3 --label "[ e ]"
+yabai -m space 4 --label "D1"
+yabai -m space 5 --label "D2"
+yabai -m space 6 --label "D3"
+yabai -m space 1 --label "Q"
+yabai -m space 2 --label "W"
+yabai -m space 3 --label "E"
 
 # ── Window Appearance ─────────────────────────────────────────────
 yabai -m config window_opacity on
