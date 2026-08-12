@@ -11,14 +11,14 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # ── Padding & Gaps ─────────────────────────────────────────────────
-yabai -m config external_bar all:38:8:8:8
+yabai -m config external_bar all:38:8
 
 # global padding
-# yabai -m config \
-#         bottom_padding 8 \
-#         left_padding 8 \
-#         right_padding 8 \
-#         window_gap 8
+yabai -m config \
+        bottom_padding 8 \
+        left_padding 8 \
+        right_padding 8 \
+        window_gap 8
 
 # if command -v sketchybar >/dev/null; then
 #     EXTERNAL_IS_1440P=$(
@@ -75,5 +75,7 @@ yabai -m rule --apply
 
 yabai -m signal --add event=space_changed \
   action="sh ~/.config/sketchybar/plugins/yabai.sh"
+
+yabai -m signal --add event=window_created app="kitty" title="btop" action="yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2"
 
 echo "Yabai configuration applied."
