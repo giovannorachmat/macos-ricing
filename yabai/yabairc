@@ -11,38 +11,29 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # ── Padding & Gaps ─────────────────────────────────────────────────
+yabai -m config external_bar all:38:8:8:8
+
 # global padding
-yabai -m config \
-  bottom_padding 8 \
-  left_padding 8 \
-  right_padding 8 \
-  window_gap 8
+# yabai -m config \
+#         bottom_padding 8 \
+#         left_padding 8 \
+#         right_padding 8 \
+#         window_gap 8
 
-# per-space top padding (depends on sketchybar; spaces 1-4 = MacBook, 5-7 = 1440p monitor)
-# if command -v sketchybar &>/dev/null; then
-#   yabai -m config --space 1 top_padding 8
-#   yabai -m config --space 2 top_padding 8
-#   yabai -m config --space 3 top_padding 8
-#   yabai -m config --space 4 top_padding 38
-#   yabai -m config --space 5 top_padding 38
-#   yabai -m config --space 6 top_padding 38
+# if command -v sketchybar >/dev/null; then
+#     EXTERNAL_IS_1440P=$(
+#         yabai -m query --displays |
+#         jq -r 'any(.[]; .frame.w == 2560)'
+#     )
+#
+#     for s in 1 2 3 4 5 6 7; do
+#         if [[ "$EXTERNAL_IS_1440P" == "true" ]]; then
+#             yabai -m config --space "$s" top_padding 38
+#         else
+#             yabai -m config --space "$s" top_padding 8
+#         fi
+#     done
 # fi
-
-
-if command -v sketchybar >/dev/null; then
-    EXTERNAL_IS_1440P=$(
-        yabai -m query --displays |
-        jq -r 'any(.[]; .frame.w == 2560)'
-    )
-
-    for s in 1 2 3 4 5 6 7; do
-        if [[ "$EXTERNAL_IS_1440P" == "true" ]]; then
-            yabai -m config --space "$s" top_padding 38
-        else
-            yabai -m config --space "$s" top_padding 8
-        fi
-    done
-fi
 
 # ── Space Labels ───────────────────────────────────────────────────
 yabai -m space 4 --label "D1"
@@ -79,6 +70,7 @@ yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="WhatsApp" manage=off
 yabai -m rule --add app="^eqMac$" manage=off
 yabai -m rule --add app="^Tailscale$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --apply
 
 yabai -m signal --add event=space_changed \
