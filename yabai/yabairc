@@ -32,14 +32,10 @@ yabai -m config \
 if command -v sketchybar >/dev/null; then
     EXTERNAL_IS_1440P=$(
         yabai -m query --displays |
-        jq -r 'any(.[]; .index == 2 and .frame.w == 2560)'
+        jq -r 'any(.[]; .frame.w == 2560)'
     )
 
-    for s in 1 2 3; do
-        yabai -m config --space "$s" top_padding 8
-    done
-
-    for s in 4 5 6 7; do
+    for s in 1 2 3 4 5 6 7; do
         if [[ "$EXTERNAL_IS_1440P" == "true" ]]; then
             yabai -m config --space "$s" top_padding 38
         else
