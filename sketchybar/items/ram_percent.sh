@@ -15,7 +15,8 @@ ram_percent=(
   background.height=20
   icon.padding_right=10
   icon.padding_left=0
-  click_script="kitty --single-instance -e btop; $POPUP_OFF"
+  # click_script="kitty --single-instance -e btop; $POPUP_OFF"
+  click_script="open -na ghostty --args --title=btop --confirm-close-surface=false -e btop; $POPUP_OFF"
   icon=$MEMORY
 )
 
