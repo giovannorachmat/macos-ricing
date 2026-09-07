@@ -8,6 +8,7 @@ alt - s : yabai -m display --focus west
 alt - g : yabai -m display --focus east
 
 # ── Space Focus ────────────────────────────────────────────────────
+# NOTE: you have to disable SPI to do these
 alt - 1 : yabai -m space --focus "D1";
 alt - 2 : yabai -m space --focus "D2";
 alt - 3 : yabai -m space --focus "D3";
@@ -44,10 +45,12 @@ shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 
 # move to prev/next space
+# NOTE: you have to disable SPI to do these
 shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
 # move to space
+# NOTE: you have to disable SPI to do these
 shift + alt - 1 : yabai -m window --space "D1";
 shift + alt - 2 : yabai -m window --space "D2";
 shift + alt - 3 : yabai -m window --space "D3";
