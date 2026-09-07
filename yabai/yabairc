@@ -4,13 +4,14 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # ── Layout ──────────────────────────────────────────────────────────
-# default layout (can be bsp, stack or float)
 yabai -m config layout bsp
 
 # new window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
 # ── Padding & Gaps ─────────────────────────────────────────────────
+# Using external_bar config to apply 38px padding globally
+# to all spaces regardless of the monitors
 yabai -m config external_bar all:38:8
 
 # global padding
@@ -19,6 +20,9 @@ yabai -m config \
         left_padding 8 \
         right_padding 8 \
         window_gap 8
+
+# NOTE:
+# Old config, just leaving it here
 
 # if command -v sketchybar >/dev/null; then
 #     EXTERNAL_IS_1440P=$(
@@ -36,6 +40,8 @@ yabai -m config \
 # fi
 
 # ── Space Labels ───────────────────────────────────────────────────
+# Space 4-6 are automatically assigned to the external monitors
+# while 1-3 are native retina display (MacBook)
 yabai -m space 4 --label "D1"
 yabai -m space 5 --label "D2"
 yabai -m space 6 --label "D3"
@@ -76,6 +82,12 @@ yabai -m rule --apply
 yabai -m signal --add event=space_changed \
   action="sh ~/.config/sketchybar/plugins/yabai.sh"
 
-yabai -m signal --add event=window_created app="kitty" title="btop" action="yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2"
+# Quick look at the resources using btop
+# but I want to make the window afloat, not tiled
+BTOP_ACTION="yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2"
+
+# Assigned terminals currently Ghostty and kitty
+yabai -m signal --add event=window_created app="kitty" title="btop" action="$BTOP_ACTION"
+yabai -m signal --add event=window_created app="Ghostty" title="btop" action="$BTOP_ACTION"
 
 echo "Yabai configuration applied."
