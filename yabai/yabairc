@@ -55,7 +55,7 @@ yabai -m config window_opacity on
 # ── Mouse ──────────────────────────────────────────────────────────
 # center mouse on window with focus
 yabai -m config \
-  mouse_follows_focus on \
+  # mouse_follows_focus on \
   focus_follows_mouse autofocus \
   mouse_modifier alt \
   mouse_action1 move \
