@@ -18,4 +18,4 @@ sketchybar --add item chevron left \
 
 sketchybar --add item front_app left \
   --subscribe front_app front_app_switched \
-  --set front_app ${front_app[@]}
+  --set front_app "${front_app[@]}"
