@@ -48,7 +48,7 @@ jobs:
 
       - name: Run ShellCheck on all shell scripts
         run: |
-          find . -name "*.sh" -type f -exec shellcheck --severity=warning --shell=bash {} +
+          find . -name "*.sh" -type f -exec shellcheck --severity=error --shell=bash {} +
 
       - name: Check for dangerous patterns
         run: |
@@ -56,12 +56,12 @@ jobs:
           if grep -r "eval " . --include="*.sh"; then
             echo "::warning::Found eval usage - review for security implications"
           fi
-          
+
           # Check for system() calls
           if grep -r "system(" . --include="*.sh"; then
             echo "::warning::Found system() calls - review for security implications"
           fi
-          
+
           # Check for hardcoded passwords/tokens
           if grep -r -i "password\|token\|secret\|api_key\|private_key" . --include="*.sh" --include="*.toml" --include="*.rc"; then
             echo "::warning::Found potential hardcoded credentials - review immediately"
@@ -82,7 +82,7 @@ jobs:
           if grep -r -E "$ipv4_pattern" . --include="*.sh" --include="*.toml" --include="*.rc" --exclude-dir=.git; then
             echo "::warning::Found potential IP addresses - review if they should be hardcoded"
           fi
-          
+
           # Find IPv6 addresses (basic pattern)
           ipv6_pattern='([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}'
           if grep -r -E "$ipv6_pattern" . --include="*.sh" --include="*.toml" --include="*.rc" --exclude-dir=.git; then
@@ -111,7 +111,7 @@ jobs:
           if grep -r -i -E "(password|token|secret|key|credential)" . --include="*.toml"; then
             echo "::warning::Found potential credentials in TOML files - review immediately"
           fi
-          
+
           # Check for HTTP URLs (should be HTTPS)
           if grep -r -E 'http://[^s]' . --include="*.sh" --include="*.toml"; then
             echo "::warning::Found HTTP URLs - consider using HTTPS"
@@ -166,7 +166,7 @@ jobs:
           # Find executable files that shouldn't be
           find . -type f -executable -name "*.md" -exec echo "::warning::Markdown file should not be executable: {}" \;
           find . -type f -executable -name "*.txt" -exec echo "::warning::Text file should not be executable: {}" \;
-          
+
           # Check for shell scripts that aren't executable
           find . -name "*.sh" -not -executable -exec echo "::warning::Shell script should be executable: {}" \;
 

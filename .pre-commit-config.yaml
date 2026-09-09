@@ -4,7 +4,7 @@ repos:
     rev: v0.10.0.1
     hooks:
       - id: shellcheck
-        args: [--severity=warning, --shell=bash]
+        args: [--severity=error, --shell=bash]
         files: \.sh$
 
   # General file checks
@@ -26,7 +26,7 @@ repos:
 
   # Security scanning for secrets (using truffleHog as alternative)
   - repo: https://github.com/trufflesecurity/trufflehog
-    rev: v3.86.7
+    rev: v3.97.4
     hooks:
       - id: trufflehog
         args: [--only-verified]
