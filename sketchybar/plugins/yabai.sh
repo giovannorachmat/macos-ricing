@@ -15,14 +15,14 @@ for sid in $(seq 0 $((SPACE_COUNT - 1))); do
   if [ "$has_focus" = "true" ]; then
     sketchybar --set "space.$sid_num" \
       icon="$label" \
-      icon.color=$WHITE \
-      background.color=$BACKGROUND_2 \
+      icon.color=$BLACK \
+      background.color=$MAGENTA \
       background.border_color=$MAGENTA
   else
     sketchybar --set "space.$sid_num" \
       icon="$label" \
-      icon.color=0xffaaaaaa \
-      background.color=0xff222222 \
-      background.border_color=0xff333333
+      icon.color=$WHITE \
+      background.color=$BACKGROUND_0 \
+      background.border_color=$MAGENTA
   fi
 done

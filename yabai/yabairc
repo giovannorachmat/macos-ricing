@@ -45,9 +45,9 @@ yabai -m config \
 yabai -m space 4 --label "D1"
 yabai -m space 5 --label "D2"
 yabai -m space 6 --label "D3"
-yabai -m space 1 --label "Q"
-yabai -m space 2 --label "W"
-yabai -m space 3 --label "E"
+yabai -m space 1 --label "D4"
+yabai -m space 2 --label "D5"
+yabai -m space 3 --label "D6"
 
 # ── Window Appearance ─────────────────────────────────────────────
 yabai -m config window_opacity on
@@ -55,7 +55,7 @@ yabai -m config window_opacity on
 # ── Mouse ──────────────────────────────────────────────────────────
 # center mouse on window with focus
 yabai -m config \
-  # mouse_follows_focus on \
+  mouse_follows_focus on \
   focus_follows_mouse autofocus \
   mouse_modifier alt \
   mouse_action1 move \
@@ -65,18 +65,24 @@ yabai -m config \
 # ── App Rules (disable tiling) ─────────────────────────────────────
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^Karabiner-EventViewer$" manage=off
-yabai -m rule --add app="^QuickTime Player$" manage=off
+
 yabai -m rule --add app="^WireGuard$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
+yabai -m rule --add app="^Tailscale$" manage=off
+
 yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^SF Symbols$" manage=off
-yabai -m rule --add app="^Activity Monitor$" manage=off
-yabai -m rule --add app="WhatsApp" manage=off
+
 yabai -m rule --add app="^eqMac$" manage=off
-yabai -m rule --add app="^Tailscale$" manage=off
-yabai -m rule --add app="^Finder$" manage=off
+
+yabai -m rule --add app="^Telegram$" manage=off
+yabai -m rule --add app="WhatsApp" manage=off
 yabai -m rule --apply
 
 yabai -m signal --add event=space_changed \
