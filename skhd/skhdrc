@@ -1,4 +1,7 @@
 # ── Window Focus ───────────────────────────────────────────────────
+hyper - left : yabai -m window --focus west
+hyper - right : yabai -m window --focus east
+
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
@@ -15,6 +18,13 @@ alt - 3 : yabai -m space --focus "D3";
 alt - 4 : yabai -m space --focus "D4";
 alt - 5 : yabai -m space --focus "D5";
 alt - 6 : yabai -m space --focus "D6";
+
+hyper - 1 : yabai -m space --focus "D1";
+hyper - 2 : yabai -m space --focus "D2";
+hyper - 3 : yabai -m space --focus "D3";
+hyper - 4 : yabai -m space --focus "D4";
+hyper - 5 : yabai -m space --focus "D5";
+hyper - 6 : yabai -m space --focus "D6";
 
 alt - tab : yabai -m space --focus next || yabai -m space --focus first
 alt + shift - tab : yabai -m space --focus prev || yabai -m space --focus last
