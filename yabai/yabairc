@@ -80,6 +80,7 @@ yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^SF Symbols$" manage=off
 
 yabai -m rule --add app="^eqMac$" manage=off
+yabai -m rule --add app="^Plexo$" manage=off
 
 yabai -m rule --add app="^Telegram$" manage=off
 yabai -m rule --add app="WhatsApp" manage=off
