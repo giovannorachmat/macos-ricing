@@ -73,3 +73,6 @@ shift + alt - 6 : yabai -m window --space "D6";
 ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : skhd --restart-service
 ctrl + alt - y : yabai --restart-service
+
+# ── Apps ───────────────────────────────────────────────────────────
+hyper - return : kitty
