@@ -12,17 +12,17 @@ macOS ricing dotfiles (tiling WMs + status bar). No build, no tests, no dependen
 
 ## Verifying changes
 
-- `pre-commit run --all-files` (install with `pip install pre-commit && pre-commit install`). CI (`.github/workflows/security-scan.yml`) enforces: `shellcheck --severity=warning --shell=bash` on all `*.sh`, `toml-cli validate` on `*.toml`, gitleaks/trufflehog, executable-bit checks.
+- `pre-commit run --all-files` (install with `pip install pre-commit && pre-commit install`) runs `shellcheck --severity=error --shell=bash` on `*.sh`, trufflehog, and executable-bit checks. TOML validation and gitleaks are CI-only (`.github/workflows/security-scan.yml`).
 - Gotcha: `sketchybarrc`, `yabairc`, `skhdrc`, `bordersrc` have no `.sh` suffix, so shellcheck and most pre-commit hooks skip them — review those manually.
 - All `*.sh` files must be executable with `#!/usr/bin/env bash` (pre-commit enforces and chmods).
-- Quick local check: `shellcheck --severity=warning --shell=bash sketchybar/*.sh sketchybar/items/*.sh sketchybar/plugins/*.sh`
+- Quick local check: `shellcheck --severity=error --shell=bash sketchybar/*.sh sketchybar/items/*.sh sketchybar/plugins/*.sh`
 
 ## Structural conventions
 
 - Three WM integrations exist in sketchybar (`items/yabai.sh`, `items/omniwm.sh`, `items/aerospace.sh`) but are mutually exclusive — `sketchybarrc` sources exactly one (currently yabai; omniwm/aerospace lines commented out). Switching WMs means editing those source lines plus the `omniwm_listener.sh` block at the bottom, and keybinds live in different files per WM (aerospace.toml has its own bindings; yabai uses skhdrc).
 - Colors (Catppuccin Mocha) and SF Symbol icons are centralized in `sketchybar/colors.sh` and `icons.sh` — reference variables (e.g. `$BACKGROUND_2`, `$MAGENTA`), never hardcode hex colors or icon strings in items/plugins.
 - Cross-file value sync: sketchybar bar `height=32` pairs with yabai `external_bar all:38:8` in `yabairc` and `[gaps]` in aerospace.toml. Changing bar height requires updating the WM gap/inset configs.
-- yabai space labels are hardware-bound: spaces 1–3 labeled `Q/W/E` (built-in display), 4–6 labeled `D1/D2/D3` (external monitors). `skhdrc` binds `alt-1..3`/`alt-q/w/e` to these labels — keep yabairc and skhdrc in sync when relabeling.
+- yabai space labels are hardware-bound: spaces 4–6 (external monitors) labeled `D1/D2/D3`, spaces 1–3 (built-in) labeled `D4/D5/D6`. `skhdrc` focuses/moves windows to these labels via `alt-1..6`/`shift+alt-1..6` — keep yabairc and skhdrc in sync when relabeling. `items/yabai.sh` renders one bar item per labeled space and must be re-run after relabeling.
 - `sketchybar/set-gaps.sh` and parts of yabairc detect/assume specific resolutions and model names — they are personal-hardware-specific, not generic.
 
 ## Runtime reload commands (on the target Mac)

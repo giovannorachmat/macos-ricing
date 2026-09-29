@@ -6,7 +6,8 @@ A comprehensive macOS desktop customization setup featuring tiling window manage
 
 This repository provides a complete desktop environment customization for macOS using modern open-source tools:
 
-- **Aerospace** - Modern tiling window manager
+- **yabai + skhd** - Tiling window manager with hotkey daemon (currently active setup)
+- **Aerospace** - Alternative modern tiling window manager
 - **SketchyBar** - Customizable menu bar replacement
 - **Borders** - Window border customization
 - **Catppuccin theme** - Consistent color scheme throughout
@@ -37,26 +38,24 @@ This repository provides a complete desktop environment customization for macOS 
 
 ### System Requirements
 - macOS (Apple Silicon or Intel)
-- SIP disabled (for window managers)
+- SIP disabled (required for yabai only; aerospace and borders work without it)
 - Homebrew package manager
 
 ### Core Dependencies
 ```bash
-# Window Manager
-brew install --cask aerospace
-
 # Status Bar
 brew install --cask sketchybar
 
 # Window Borders
 brew install borders
+
+# Window Manager (pick one)
+brew install yabai skhd        # active setup, requires SIP disabled
+brew install --cask aerospace  # alternative, no SIP changes needed
 ```
 
 ### Optional Tools
 ```bash
-# Alternative Window Manager
-brew install yabai skhd
-
 # Terminal & System Monitor
 brew install --cask kitty
 brew install btop
@@ -72,13 +71,13 @@ If you don't have Homebrew installed:
 
 ### 2. Install Core Applications
 ```bash
-# Install window manager
-brew install --cask aerospace
+# Window manager (active setup)
+brew install yabai skhd
 
-# Install status bar
+# Status bar
 brew install --cask sketchybar
 
-# Install window borders
+# Window borders
 brew install borders
 ```
 
@@ -90,7 +89,14 @@ cd macos-ricing
 
 ### 4. Setup Configuration Files
 
-#### Aerospace Configuration
+#### Yabai & Skhd Configuration
+```bash
+mkdir -p ~/.config/yabai ~/.config/skhd
+cp yabai/yabairc ~/.config/yabai/
+cp skhd/skhdrc ~/.config/skhd/
+```
+
+#### Aerospace Configuration (alternative WM)
 ```bash
 # For 13" MacBook
 mkdir -p ~/.config/aerospace
@@ -128,7 +134,17 @@ cp borders/bordersrc ~/.config/
 
 ### 6. Enable Services
 
-#### Start Aerospace
+#### Start Yabai & Skhd
+```bash
+# Load the scripting addition (needs SIP disabled)
+sudo yabai --load-sa
+
+# Run on login
+brew services start yabai
+brew services start skhd
+```
+
+#### Start Aerospace (alternative WM)
 ```bash
 # Load the configuration
 aerospace config reload
@@ -148,8 +164,9 @@ echo "sketchybar --load ~/.config/sketchybar/sketchybarrc" >> ~/.zshrc
 
 #### Start Borders
 ```bash
-# Enable borders on login
-echo "borders active_color=0xffe0afff inactive_color=0xff494d64 width=5.0" >> ~/.zshrc
+# Config lives in borders/bordersrc (copied to ~/.config/ in step 4)
+# Run it on login, e.g. add to ~/.zshrc:
+echo "~/.config/bordersrc" >> ~/.zshrc
 ```
 
 ### 7. Restart Your System
@@ -168,8 +185,9 @@ macos-ricing/
 │   ├── colors.sh          # Color definitions
 │   ├── icons.sh           # SF Symbols mappings
 │   └── sketchybarrc       # Main configuration
-├── yabai/                 # Alternative window manager
-├── skhd/                  # Hotkey daemon for Yabai
+├── yabai/                 # Window manager (active setup)
+├── skhd/                  # Hotkey daemon for yabai
+├── omniwm/                # Alternative window manager settings
 └── borders/               # Window border customization
 ```
 
@@ -177,8 +195,12 @@ macos-ricing/
 
 ### Common Issues
 
-#### Aerospace not working
-- Ensure SIP is disabled
+#### Yabai not managing windows
+- Ensure SIP is disabled and the scripting addition is loaded: `sudo yabai --load-sa`
+- Check service: `brew services list | grep yabai`
+- Apply config: `bash ~/.config/yabai/yabairc`
+
+#### Aerospace not working (alternative WM)
 - Check configuration: `aerospace config validate`
 - Reload config: `aerospace config reload`
 
@@ -189,17 +211,20 @@ macos-ricing/
 
 #### Window borders not appearing
 - Ensure borders is installed: `brew list borders`
-- Manually start: `borders active_color=0xffe0afff inactive_color=0xff494d64 width=5.0`
+- Manually start: `~/.config/bordersrc`
 
 ### Getting Help
 - Check each tool's documentation:
   - [Aerospace Documentation](https://nikitabobko.github.io/AeroSpace/)
+  - [Yabai Wiki](https://github.com/koekeishiya/yabai/wiki)
   - [SketchyBar Documentation](https://felixkratz.github.io/SketchyBar/)
   - [Borders GitHub](https://github.com/FelixKratz/Borders)
 
 ## 🤝 Contributing
 
 Feel free to submit issues, enhancement requests, or pull requests to improve this configuration setup.
+
+Before committing, run the pre-commit hooks (`pip install pre-commit && pre-commit install && pre-commit run --all-files`). See `SECURITY.md` and `AGENTS.md` for what is checked and the repo conventions.
 
 ## 📄 License
 
@@ -208,5 +233,3 @@ This repository follows the MIT License. Feel free to use and modify these confi
 ---
 
 **Note**: This setup is optimized for MacBook Pro 13" and 14" models but can be adapted for other Mac configurations. Adjust the gap settings and workspace assignments based on your specific hardware setup.
-
-**Disclaimer**: This markdown is generated using OpenCode Big Pickle model.
