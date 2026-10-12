@@ -30,7 +30,7 @@
 # export BG1=0xff3c3836
 # export BG2=0xff504945
 
-# ### Catppuccin
+# ### Catppuccin (Macchiato)
 export BLACK=0xff181926
 export WHITE=0xffcad3f5
 export RED=0xffed8796
@@ -41,8 +41,8 @@ export ORANGE=0xfff5a97f
 export MAGENTA=0xffc6a0f6
 export GREY=0xff939ab7
 export TRANSPARENT=0x00000000
-export BG0=0xff1e1e2e
-export BG1=0x603c3e4f
+export BG0=0xff24273a
+export BG1=0x60363a4f
 export BG2=0x60494d64
 
 export BATTERY_1=0xffa6da95
@@ -56,7 +56,7 @@ export BAR_COLOR=$BG0
 export BAR_BORDER_COLOR=$BG2
 export BACKGROUND_1=$BG1
 export BACKGROUND_2=$BG2
-export ICON_COLOR=$WHITE # Color of all icons
+export ICON_COLOR=$WHITE  # Color of all icons
 export LABEL_COLOR=$WHITE # Color of all labels
 export POPUP_BACKGROUND_COLOR=$BAR_COLOR
 export POPUP_BORDER_COLOR=$WHITE
