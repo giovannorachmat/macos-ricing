@@ -8,6 +8,6 @@ calendar=(
   background.color=$TRANSPARENT
 )
 
-sketchybar --add item calendar q \
+sketchybar --add item calendar e \
   --set calendar "${calendar[@]}" \
   --subscribe calendar system_woke
