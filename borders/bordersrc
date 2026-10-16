@@ -1,11 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+source "$HOME/.config/sketchybar/colors.sh"
 
 options=(
   style=round
-  width=3.0
+  width=2.0
   hidpi=on
-  active_color=0xfff265b5
-  inactive_color=0x00000000
+  active_color=$BLUE
+  inactive_color=$TRANSPARENT
   width=6.0
 )
 
