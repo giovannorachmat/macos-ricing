@@ -19,7 +19,7 @@ for sid in $(seq 0 $((SPACE_COUNT - 1))); do
   if [ "$has_focus" = "true" ]; then
     icon_color=$WHITE
     background_color=$BACKGROUND_2
-    background_border_color=$MAGENTA
+    background_border_color=$BLUE
   else
     icon_color=0xffaaaaaa
     background_color=0xff222222

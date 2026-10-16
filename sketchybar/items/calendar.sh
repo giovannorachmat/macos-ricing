@@ -3,7 +3,7 @@
 calendar=(
   update_freq=45
   icon=$CALENDAR
-  icon.color=$BLUE
+  icon.color=$GREEN
   script="$PLUGIN_DIR/calendar.sh"
   background.color=$TRANSPARENT
 )

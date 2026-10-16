@@ -16,13 +16,13 @@ for sid in $(seq 0 $((SPACE_COUNT - 1))); do
     sketchybar --set "space.$sid_num" \
       icon="$label" \
       icon.color=$BLACK \
-      background.color=$MAGENTA \
-      background.border_color=$MAGENTA
+      background.color=$BLUE \
+      background.border_color=$BLUE
   else
     sketchybar --set "space.$sid_num" \
       icon="$label" \
       icon.color=$WHITE \
       background.color=$BACKGROUND_0 \
-      background.border_color=$MAGENTA
+      background.border_color=$BLUE
   fi
 done

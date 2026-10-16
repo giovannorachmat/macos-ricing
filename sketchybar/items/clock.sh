@@ -9,6 +9,6 @@ clock=(
   background.height=25
 )
 
-sketchybar --add item clock e \
+sketchybar --add item clock q \
   --set clock "${clock[@]}" \
   --subscribe clock system_woke

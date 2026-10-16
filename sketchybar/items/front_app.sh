@@ -2,8 +2,9 @@
 
 front_app=(
   script="$PLUGIN_DIR/front_app.sh"
-  background.color=$TRANSPARENT
-  background.border_color=$ORANGE
+  label.color=$BLACK
+  background.color=$BLUE
+  background.border_color=$BLUE
   background.border_width=1
   background.corner_radius=5
   background.height=23
