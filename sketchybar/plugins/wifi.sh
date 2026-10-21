@@ -6,8 +6,8 @@ SSID=$(networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[
 
 if [ "$SENDER" = "wifi_change" ]; then
   if [ -z "$SSID" ]; then
-    sketchybar --set "$NAME" icon="$WIFI_DISCONNECTED" label=""
+    sketchybar --set "$NAME" icon="$WIFI_DISCONNECTED"
   else
-    sketchybar --set "$NAME" icon="$WIFI_CONNECTED" label="$SSID"
+    sketchybar --set "$NAME" icon="$WIFI_CONNECTED"
   fi
 fi
