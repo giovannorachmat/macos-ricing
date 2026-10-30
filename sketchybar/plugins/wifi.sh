@@ -2,12 +2,10 @@
 
 source "$CONFIG_DIR/icons.sh"
 
-SSID=$(networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+IFACE=$(networksetup -listallhardwareports | awk '/Wi-Fi/{getline; print $2}')
 
-if [ "$SENDER" = "wifi_change" ]; then
-  if [ -z "$SSID" ]; then
-    sketchybar --set "$NAME" icon="$WIFI_DISCONNECTED"
-  else
-    sketchybar --set "$NAME" icon="$WIFI_CONNECTED"
-  fi
+if ipconfig getsummary "$IFACE" | grep -q '^ *SSID : '; then
+  sketchybar --set "$NAME" icon="$WIFI_CONNECTED" label=""
+else
+  sketchybar --set "$NAME" icon="$WIFI_DISCONNECTED" label=""
 fi
